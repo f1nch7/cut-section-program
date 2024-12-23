@@ -21,9 +21,24 @@
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Sections.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="include\源.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SectionData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\GastResult.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sections.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SectionData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

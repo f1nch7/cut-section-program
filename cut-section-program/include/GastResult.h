@@ -7,33 +7,36 @@
 #include <windows.h>
 using namespace std;
 
-class Point {
-public:
+struct Point {
+    Point(double _x, double _y) : x(_x), y(_y) {};
     double x = 0.0;
     double y = 0.0;
-
+    bool operator==(const Point& other) const {
+        return x == other.x && y == other.y;
+    }
 };
 
 class GastResult {
 
 private:
+    int ncols = 0;
+    int nrows = 0;
+    double xllcorner = 0;
+    double yllcorner = 0;
+    double cellSize = 0.0;
     vector<string> allDatPaths;
-    string folderPath;
+    string resultFolderPath;
+    string bathyFolderPath;
+    string bathyName;
 
 public:
-    void setFolderPath(string _path);
+    void initValues(const string& _resultFolderPath, const string& _bathyFolderPath, const string& _bathyName = "bathy.asc");
     vector<string> getAllDatPaths();
+    void readBathy(const string& _path);
 
 private:
     void findDat(const string& _path);
-    // 读取数据文件
-    static vector<vector<double>> readData(const string& filename);
+    string splitString(const string& _line);
 
-    // 计算流量、面积、速度等
-    static void computeSectionData(const vector<Point>& sectionPoints, 
-                                   const vector<vector<double>>& modelData, 
-                                   vector<double>& QSec, 
-                                   vector<double>& A, 
-                                   vector<double>& Width);
 };
 
