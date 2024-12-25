@@ -13,8 +13,18 @@ class SectionData
 public:
 	SectionData();
 	~SectionData();
-public:
-	void initValues(const string& _resultFolderPath, const string& _bathyFolderPath, const string& _bathyName = "bathy.asc");
+
 private:
-	GastResult gr;
+	GastResult gr; // 读取bathy文件头部信息
+	vector<vector<Point>> allSections; // 存储所有断面的坐标
+
+public:
+	// 初始化路径信息，读取bathy文件头部信息
+	void initValues(const string& _resultFolderPath, const string& _bathyFolderPath, const string& _bathyName = "bathy.asc");
+	// 接收断面点信息
+	void initSectionData(const vector<Point>& _vPoints);
+	// 计算断面截取的网格行列号
+	void calSectionData(double _k, double _b);
+	bool isSectionData(double _nrow, double _ncol, double _k, double _b);
+
 };

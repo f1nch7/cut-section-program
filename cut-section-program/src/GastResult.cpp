@@ -32,6 +32,17 @@ void GastResult::readBathy(const string& _path) {
     this->cellSize = atof(this->splitString(line).c_str());
 }
 
+Point GastResult::getPointCoor(int _nrow, int _ncol)
+{
+	// 通过行列号获取坐标
+	// x = xllcorner + cellsize * ncol
+	// y = yllcorner + cellsize * nrow
+	double x = this->xllcorner + this->cellSize * _ncol;
+	double y = this->yllcorner + this->cellSize * _nrow;
+	Point p(x, y);
+	return p;
+}
+
 void GastResult::findDat(const string& _path) {
     string imglist_file = "1.txt";//存储文件名称列表
     ofstream ofs(imglist_file);
@@ -72,6 +83,19 @@ string GastResult::splitString(const string& _line)
         return "";
     }
     return v1.back();
+}
+
+void GastResult::initCoorArr()
+{
+	this->coorArr = new double* [this->nrows];
+	for (int i = 0; i < this->nrows; i++) {
+		this->coorArr[i] = new double[this->ncols];
+	}
+	for (int i = 0; i < this->nrows; i++) {
+		for (int j = 0; j < this->ncols; j++) {
+			
+		}
+	}
 }
 
 //vector<vector<double>> GastResult::readData(const string &filename)

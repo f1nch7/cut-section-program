@@ -10,7 +10,8 @@ int main() {
                              {0,0}, {50.12,50.12} }; // 第二个断面的两个点···· 以此类推
 
     */
-    vector<Point> vp = {    {0,0}, {50.12,50.12}};
+    vector<Point> vPoints = {   {0,0}, {1000.0,100.0},
+                                {12,20}, {50.12,54.12} };
     SectionData sd;
     /*
         默认bathy的文件名是  bathy.asc，如果要更改，则在第三个参数输入bathy的文件名：
@@ -18,6 +19,7 @@ int main() {
         sd.initValues(datFolderPath, bathyFolderPath, bathyName);
     */
     sd.initValues(datFolderPath, bathyFolderPath);
+	sd.initSectionData(vPoints);
     
 
     return 0;
